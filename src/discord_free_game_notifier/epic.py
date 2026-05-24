@@ -687,7 +687,7 @@ def create_embed(game: EpicGameElement) -> DiscordEmbed | None:
     """
     description: str = game.description or "No description found"
     logger.info(f"{game.title}: Description: {description}")
-    embed = DiscordEmbed(description=description)
+    embed = DiscordEmbed(description=description, color="ffffff")
     url: str = game_url(game)
     game_name: str = game.title
 

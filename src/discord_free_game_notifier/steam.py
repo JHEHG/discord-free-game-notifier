@@ -169,7 +169,7 @@ def _process_game(game: Game) -> tuple[DiscordEmbed, str] | None:
         logger.info(f"Game already posted: {game.name}")
         return None
 
-    embed = DiscordEmbed(color="fcc603")
+    embed = DiscordEmbed(color="0000ff")
 
     embed.set_author(
         name=game.name,

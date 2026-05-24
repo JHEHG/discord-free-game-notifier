@@ -189,7 +189,8 @@ def _process_game(game: Game) -> tuple[DiscordEmbed, str] | None:
         embed.description = html.unescape(more_data.short_description)
 
     if more_data.old_price:
-        embed.add_embed_field(name="Old Price", value=more_data.old_price)
+    embed.add_embed_field(name="Old Price", value=f"~~{more_data.old_price}~~")
+    embed.add_embed_field(name="Price", value="🎉 FREE / INGYENES")
 
     if more_data.release_date:
         embed.add_embed_field(name="Release Date", value=more_data.release_date)

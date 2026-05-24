@@ -23,4 +23,4 @@ jobs:
       - name: Run Notifier Script
         env:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-        run: uv run python -m discord_free_game_notifier
+        run: uv run discord-free-game-notifier

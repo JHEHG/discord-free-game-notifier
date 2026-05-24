@@ -1,0 +1,26 @@
+name: notify
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs automatically every hour
+  workflow_dispatch: # Allows you to trigger it manually
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "pyproject.toml"
+
+      - name: Run Notifier Script
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: uv run python -m discord_free_game_notifier

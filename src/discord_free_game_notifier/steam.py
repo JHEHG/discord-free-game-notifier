@@ -188,11 +188,11 @@ def _process_game(game: Game) -> tuple[DiscordEmbed, str] | None:
     if more_data.short_description:
         embed.description = html.unescape(more_data.short_description)
 
- if more_data.old_price:
-    embed.add_embed_field(name="Old Price", value="~~" + str(more_data.old_price) + "~~")
-    embed.add_embed_field(name="Price", value="🎉 FREE / INGYENES")
-    if hasattr(more_data, 'expiry_date') and more_data.expiry_date:
-         embed.add_embed_field(name="Elérhető eddig", value=str(more_data.expiry_date))
+    if more_data.old_price:
+        embed.add_embed_field(name="Old Price", value="~~" + str(more_data.old_price) + "~~")
+        embed.add_embed_field(name="Price", value="🎉 FREE / INGYENES")
+        if hasattr(more_data, 'expiry_date') and more_data.expiry_date:
+            embed.add_embed_field(name="Elérhető eddig", value=str(more_data.expiry_date))
 
     if more_data.release_date:
         embed.add_embed_field(name="Release Date", value=more_data.release_date)

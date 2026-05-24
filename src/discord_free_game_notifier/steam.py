@@ -191,8 +191,14 @@ def _process_game(game: Game) -> tuple[DiscordEmbed, str] | None:
     if more_data.old_price:
         embed.add_embed_field(name="Old Price", value="~~" + str(more_data.old_price) + "~~")
         embed.add_embed_field(name="Price", value="🎉 FREE / INGYENES")
-        if hasattr(more_data, 'expiry_date') and more_data.expiry_date:
-            embed.add_embed_field(name="Elérhető eddig", value=str(more_data.expiry_date))
+        
+        # Pulls the time notice directly from Steam's text description if it's there
+        if more_data.short_description and "before" in more_data.short_description:
+            try:
+                time_text = more_data.short_description.split("before")[1].split(".")[0].strip()
+                embed.add_embed_field(name="Elérhető eddig", value=f"Május {time_text.replace('@', '-')}")
+            except Exception:
+                embed.add_embed_field(name="Elérhető eddig", value="Lásd a Steam oldalon")
 
     if more_data.release_date:
         embed.add_embed_field(name="Release Date", value=more_data.release_date)

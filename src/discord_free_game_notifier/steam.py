@@ -198,8 +198,9 @@ def _process_game(game: Game) -> tuple[DiscordEmbed, str] | None:
                 time_text = more_data.short_description.split("before")[1].split(".")[0].strip()
                 embed.add_embed_field(name="Elérhető eddig", value=f"Május {time_text.replace('@', '-')}")
             except Exception:
-                embed.add_embed_field(name="Elérhető eddig", value="Lásd a Steam oldalon")
-
+                embed.add_embed_field(name="Elérhető eddig", value="Lásd a Steam oldalon 🌐")
+        else:
+            embed.add_embed_field(name="Elérhető eddig", value="Lásd a Steam oldalon 🌐")
     if more_data.release_date:
         embed.add_embed_field(name="Release Date", value=more_data.release_date)
 
